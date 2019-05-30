@@ -39,7 +39,7 @@ public class FirstTest {
     }
 
     @Test
-    public void firstTest() throws InterruptedException
+    public void firstTest()
     {
         preconditions();
 
@@ -50,9 +50,9 @@ public class FirstTest {
         );
 
         waitForElementAndSenKeys(
-                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                By.id("org.wikipedia:id/search_src_text"),
                 "Java",
-                "Cannot find search input",
+                "Cannot find 'Search Wikipedia' text input",
                 5
         );
 
@@ -60,56 +60,6 @@ public class FirstTest {
                 By.xpath("//*[@class='android.view.ViewGroup']//*[@text='Object-oriented programming language']"),
                 "Cannot find content",
                 15
-        );
-    }
-
-    @Test
-    public void testCancelSearch()
-    {
-        preconditions();
-
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/search_container"),
-                "Cannot find 'Search Wikipedia' field",
-                5
-        );
-
-        waitForElementAndSenKeys(
-                By.id("org.wikipedia:id/search_src_text"),
-                "zz",
-                "Cannot find 'Search Wikipedia' text input",
-                5
-        );
-
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "Cannot find close button",
-                5
-        );
-
-        waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "X still present on the page",
-                5
-        );
-    }
-
-    @Test
-    public void testClearSearch()
-    {
-        preconditions();
-
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/search_container"),
-                "Cannot find 'Search Wikipedia' field",
-                5
-        );
-
-        waitForElementAndSenKeys(
-                By.id("org.wikipedia:id/search_src_text"),
-                "zz",
-                "Cannot find 'Search Wikipedia' text input",
-                5
         );
 
         waitForElementAndClear(
