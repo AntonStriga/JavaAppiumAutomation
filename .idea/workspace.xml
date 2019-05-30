@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="680">
+              <caret line="64" column="10" lean-forward="true" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -53,6 +53,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -69,8 +71,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -93,12 +93,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.firstTest">
+  <component name="RunManager" selected="JUnit.FirstTest">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FirstTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstTest.defaultSearchInputTextTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="defaultSearchInputTextTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,10 +133,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FirstTest.testDefaultSearchInputText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testDefaultSearchInputText" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FirstTest.firstTest" />
         <item itemvalue="JUnit.FirstTest" />
+        <item itemvalue="JUnit.FirstTest.testDefaultSearchInputText" />
+        <item itemvalue="JUnit.FirstTest.defaultSearchInputTextTest" />
+        <item itemvalue="JUnit.FirstTest.firstTest" />
         <item itemvalue="JUnit.FirstTest.testCancelSearch" />
       </list>
     </recent_temporary>
@@ -145,24 +167,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_firstTest - 2019.05.30 at 01h 06m 46s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_firstTest - 2019.05.30 at 01h 17m 53s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 29m 59s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 46m 04s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 47m 06s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 15h 02m 02s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 15h 03m 29s.xml">
       <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
     </history-entry>
@@ -175,11 +179,30 @@
     <history-entry file="FirstTest_firstTest - 2019.05.30 at 17h 55m 29s.xml">
       <configuration name="FirstTest.firstTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="FirstTest_defaultSearchInputTextTest - 2019.05.31 at 00h 59m 12s.xml">
+      <configuration name="FirstTest.defaultSearchInputTextTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_defaultSearchInputTextTest - 2019.05.31 at 01h 02m 08s.xml">
+      <configuration name="FirstTest.defaultSearchInputTextTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_defaultSearchInputTextTest - 2019.05.31 at 01h 07m 45s.xml">
+      <configuration name="FirstTest.defaultSearchInputTextTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_testDefaultSearchInputText - 2019.05.31 at 01h 14m 12s.xml">
+      <configuration name="FirstTest.testDefaultSearchInputText" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_testDefaultSearchInputText - 2019.05.31 at 01h 14m 58s.xml">
+      <configuration name="FirstTest.testDefaultSearchInputText" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest - 2019.05.31 at 01h 19m 49s.xml">
+      <configuration name="FirstTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2739872" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -188,7 +211,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -210,8 +233,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="680">
+          <caret line="64" column="10" lean-forward="true" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,7 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -39,39 +40,28 @@ public class FirstTest {
     }
 
     @Test
-    public void firstTest()
+    public void testDefaultSearchInputText()
     {
         preconditions();
 
         waitForElementAndClick(
-                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                "Cannot find skip button",
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' input",
                 5
         );
 
-        waitForElementAndSenKeys(
+        WebElement searchInput = waitForElementPresent(
                 By.id("org.wikipedia:id/search_src_text"),
-                "Java",
-                "Cannot find 'Search Wikipedia' text input",
+                "Cannot find Search input",
                 5
         );
 
-        waitForElementPresent(
-                By.xpath("//*[@class='android.view.ViewGroup']//*[@text='Object-oriented programming language']"),
-                "Cannot find content",
-                15
-        );
+        String default_search_input_text = searchInput.getAttribute("text");
 
-        waitForElementAndClear(
-                By.id("org.wikipedia:id/search_src_text"),
-                "Cannot find 'Search Wikipedia' text input",
-                5
-        );
-
-        waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "X still present on the page",
-                5
+        Assert.assertEquals(
+                "Unexpected default text in search input",
+                "Search Wikipedia",
+                default_search_input_text
         );
     }
 
