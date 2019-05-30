@@ -94,6 +94,37 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void testClearSearch()
+    {
+        preconditions();
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' field",
+                5
+        );
+
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "zz",
+                "Cannot find 'Search Wikipedia' text input",
+                5
+        );
+
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find 'Search Wikipedia' text input",
+                5
+        );
+
+        waitForElementNotPresent(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "X still present on the page",
+                5
+        );
+    }
+
     private void preconditions()
     {
         waitForElementAndClick(
@@ -138,5 +169,12 @@ public class FirstTest {
         return wait.until(
                 ExpectedConditions.invisibilityOfElementLocated(by)
         );
+    }
+
+    private WebElement waitForElementAndClear(By by, String error_message, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresent(by, error_message, 5);
+        element.clear();
+        return element;
     }
 }
