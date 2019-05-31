@@ -1,6 +1,7 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 
 public class FirstTest {
@@ -39,13 +41,13 @@ public class FirstTest {
     }
 
     @Test
-    public void firstTest()
+    public void testSearchResultsList()
     {
         preconditions();
 
         waitForElementAndClick(
                 By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                "Cannot find skip button",
+                "Cannot find 'Search Wikipedia' input",
                 5
         );
 
@@ -57,21 +59,30 @@ public class FirstTest {
         );
 
         waitForElementPresent(
-                By.xpath("//*[@class='android.view.ViewGroup']//*[@text='Object-oriented programming language']"),
-                "Cannot find content",
+                By.xpath("//*[@resource-id='org.wikipedia:id/fragment_search_results']"),
+                "Cannot find search results",
                 15
         );
 
-        waitForElementAndClear(
-                By.id("org.wikipedia:id/search_src_text"),
-                "Cannot find 'Search Wikipedia' text input",
+        List allSearchResults = driver.findElements(By.xpath("//*[@resource-id='org.wikipedia:id/search_results_list']//*[@class='android.view.ViewGroup']"));
+
+        Assert.assertTrue(
+                "Amount of results is one or less",
+                allSearchResults.size() > 1
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find 'X' button",
                 5
         );
 
-        waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "X still present on the page",
-                5
+        Assert.assertTrue(
+                waitForElementNotPresent(
+                        By.id("org.wikipedia:id/fragment_search_results"),
+                        "Results still present on the page",
+                        5
+                )
         );
     }
 
