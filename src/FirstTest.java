@@ -1,6 +1,8 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 
 public class FirstTest {
@@ -41,38 +44,41 @@ public class FirstTest {
     @Test
     public void firstTest()
     {
+        String search_query = "sandwich";
+
         preconditions();
 
         waitForElementAndClick(
                 By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                "Cannot find skip button",
+                "Cannot find 'Search Wikipedia' field",
                 5
         );
 
         waitForElementAndSenKeys(
                 By.id("org.wikipedia:id/search_src_text"),
-                "Java",
+                search_query,
                 "Cannot find 'Search Wikipedia' text input",
                 5
         );
 
         waitForElementPresent(
-                By.xpath("//*[@class='android.view.ViewGroup']//*[@text='Object-oriented programming language']"),
-                "Cannot find content",
+                By.id("org.wikipedia:id/search_results_list"),
+                "There are no search results",
                 15
         );
 
-        waitForElementAndClear(
-                By.id("org.wikipedia:id/search_src_text"),
-                "Cannot find 'Search Wikipedia' text input",
-                5
-        );
+        WebElement elementsList = driver.findElement(By.id("org.wikipedia:id/search_results_list"));
+        List<MobileElement> searchElements = elementsList.findElements(By.xpath("//*[@class='android.view.ViewGroup']"));
 
-        waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "X still present on the page",
-                5
-        );
+        for (MobileElement element : searchElements){
+            String search_result_title = element.findElement(By.id("org.wikipedia:id/page_list_item_title")).getAttribute("text");
+            search_result_title = search_result_title.toLowerCase();
+
+            Assert.assertTrue(
+                    "Search query doesn't present in all search results",
+                    search_result_title.contains(search_query.toLowerCase())
+            );
+        }
     }
 
     private void preconditions()
