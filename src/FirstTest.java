@@ -1,9 +1,11 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,7 +41,7 @@ public class FirstTest {
     }
 
     @Test
-    public void firstTest()
+    public void swipeToFooterInTheArticle()
     {
         preconditions();
 
@@ -51,28 +53,122 @@ public class FirstTest {
 
         waitForElementAndSenKeys(
                 By.id("org.wikipedia:id/search_src_text"),
-                "Java",
+                "Appium",
                 "Cannot find 'Search Wikipedia' text input",
                 5
         );
 
-        waitForElementPresent(
-                By.xpath("//*[@class='android.view.ViewGroup']//*[@text='Object-oriented programming language']"),
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
                 "Cannot find content",
                 15
         );
 
-        waitForElementAndClear(
+        swipeUpToFindElement(
+                By.xpath("//*[@text='View page in browser']"),
+                "Cannot reach the footer",
+                20
+        );
+
+    }
+
+    @Test
+    public void addArticleToTheMyList()
+    {
+        preconditions();
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "Cannot find skip button",
+                5
+        );
+
+        waitForElementAndSenKeys(
                 By.id("org.wikipedia:id/search_src_text"),
+                "Appium",
                 "Cannot find 'Search Wikipedia' text input",
                 5
         );
 
-        waitForElementNotPresent(
-                By.id("org.wikipedia:id/search_close_btn"),
-                "X still present on the page",
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find content",
+                15
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/article_menu_bookmark"),
+                "Cannot find Add to My List button",
                 5
         );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='GOT IT']"),
+                "Cannot find GOT IT button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/create_button"),
+                "Cannot find Create new list button",
+                5
+        );
+
+//        waitForElementAndClear(
+//                By.id("org.wikipedia:id/text_input"),
+//                "Cannot find text input element for clearing",
+//                5
+//        );
+
+        String name_of_folder = "Learning list";
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/text_input"),
+                name_of_folder,
+                "Cannot find text input element",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='OK']"),
+                "Cannot find OK button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find Navigate up button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='NO THANKS']"),
+                "Cannot find NO THANKS button",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                "Cannot fine My lists button",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='" + name_of_folder + "']"),
+                "Cannot find Learning list",
+                5
+        );
+
+        swipeElementToLeft(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find saved article to swipe"
+        );
+
+        waitForElementNotPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']']"),
+                "Saved article still in the list",
+                5
+        );
+
     }
 
     private void preconditions()
@@ -126,5 +222,67 @@ public class FirstTest {
         WebElement element = waitForElementPresent(by, error_message, 5);
         element.clear();
         return element;
+    }
+
+    protected void swipeUp(int timeToSwipe)
+    {
+        TouchAction action = new TouchAction(driver);
+        Dimension size = driver.manage().window().getSize();
+        int x = size.width/2;
+        int start_y = (int) (size.height * 0.8);
+        int end_y = (int) (size.height * 0.2);
+
+        action
+                .press(x, start_y)
+                .waitAction(timeToSwipe)
+                .moveTo(x, end_y)
+                .release()
+                .perform();
+    }
+
+    protected void swipeUpQuick()
+    {
+        swipeUp(200);
+    }
+
+    protected void swipeUpToFindElement(By by, String error_message, int max_swipes)
+    {
+        int already_swipe = 0;
+        while (driver.findElements(by).size() == 0)
+        {
+            if (already_swipe == max_swipes){
+                waitForElementPresent(
+                        by,
+                        "Cannot find element by swiping up/ \n" + error_message,
+                        0
+                );
+                return;
+            }
+            swipeUpQuick();
+            ++already_swipe;
+        }
+    }
+
+    protected void swipeElementToLeft(By by, String error_message)
+    {
+        WebElement element = waitForElementPresent(
+                by,
+                error_message,
+                15
+        );
+
+        int left_x = element.getLocation().getX();
+        int right_x = left_x + element.getSize().getWidth();
+        int upper_y = element.getLocation().getY();
+        int lower_y = upper_y + element.getSize().getHeight();
+        int middle_y = (upper_y + lower_y) / 2;
+
+        TouchAction action = new TouchAction(driver);
+        action
+                .press(right_x,middle_y)
+                .waitAction(300)
+                .moveTo(left_x, middle_y)
+                .release()
+                .perform();
     }
 }

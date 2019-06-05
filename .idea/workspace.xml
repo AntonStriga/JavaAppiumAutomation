@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d777522-609d-4e77-bb44-791aa93c3f2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +19,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+            <state relative-caret-position="17">
+              <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+              <folding>
+                <element signature="e#4332#4333#0" expanded="true" />
+                <element signature="e#4357#4358#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,6 +57,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -70,7 +75,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -93,12 +97,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.firstTest">
+  <component name="RunManager" selected="JUnit.FirstTest.addArticleToTheMyList">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FirstTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstTest.addArticleToTheMyList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="addArticleToTheMyList" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,6 +139,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FirstTest.addArticleToTheMyList" />
         <item itemvalue="JUnit.FirstTest.firstTest" />
         <item itemvalue="JUnit.FirstTest" />
         <item itemvalue="JUnit.FirstTest.testCancelSearch" />
@@ -145,41 +160,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 29m 59s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 07m 34s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 46m 04s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 09m 49s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 14h 47m 06s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 11m 54s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 15h 02m 02s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 14m 00s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2019.05.30 at 15h 03m 29s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 15m 36s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest - 2019.05.30 at 15h 05m 44s.xml">
-      <configuration name="FirstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 27m 08s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest - 2019.05.30 at 17h 03m 14s.xml">
-      <configuration name="FirstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 29m 41s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_firstTest - 2019.05.30 at 17h 55m 29s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 31m 29s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_firstTest - 2019.05.31 at 00h 34m 20s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 34m 42s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_firstTest - 2019.05.31 at 00h 43m 08s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 38m 58s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2803838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -188,7 +204,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -210,8 +226,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        <state relative-caret-position="17">
+          <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+          <folding>
+            <element signature="e#4332#4333#0" expanded="true" />
+            <element signature="e#4357#4358#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
