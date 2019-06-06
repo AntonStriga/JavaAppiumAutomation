@@ -2,16 +2,19 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 
 public class FirstTest {
@@ -68,105 +71,6 @@ public class FirstTest {
                 By.xpath("//*[@text='View page in browser']"),
                 "Cannot reach the footer",
                 20
-        );
-
-    }
-
-    @Test
-    public void addArticleToTheMyList()
-    {
-        preconditions();
-
-        waitForElementAndClick(
-                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                "Cannot find skip button",
-                5
-        );
-
-        waitForElementAndSenKeys(
-                By.id("org.wikipedia:id/search_src_text"),
-                "Appium",
-                "Cannot find 'Search Wikipedia' text input",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
-                "Cannot find content",
-                15
-        );
-
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/article_menu_bookmark"),
-                "Cannot find Add to My List button",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@text='GOT IT']"),
-                "Cannot find GOT IT button",
-                5
-        );
-
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/create_button"),
-                "Cannot find Create new list button",
-                5
-        );
-
-//        waitForElementAndClear(
-//                By.id("org.wikipedia:id/text_input"),
-//                "Cannot find text input element for clearing",
-//                5
-//        );
-
-        String name_of_folder = "Learning list";
-        waitForElementAndSenKeys(
-                By.id("org.wikipedia:id/text_input"),
-                name_of_folder,
-                "Cannot find text input element",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@text='OK']"),
-                "Cannot find OK button",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
-                "Cannot find Navigate up button",
-                5
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@text='NO THANKS']"),
-                "Cannot find NO THANKS button",
-                15
-        );
-
-        waitForElementAndClick(
-                By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
-                "Cannot fine My lists button",
-                10
-        );
-
-        waitForElementAndClick(
-                By.xpath("//*[@text='" + name_of_folder + "']"),
-                "Cannot find Learning list",
-                5
-        );
-
-        swipeElementToLeft(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
-                "Cannot find saved article to swipe"
-        );
-
-        waitForElementNotPresent(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']']"),
-                "Saved article still in the list",
-                5
         );
 
     }
@@ -284,5 +188,17 @@ public class FirstTest {
                 .moveTo(left_x, middle_y)
                 .release()
                 .perform();
+    }
+
+    private int getElementsAmount (By by)
+    {
+        List elements = driver.findElements(by);
+        return elements.size();
+    }
+
+    private String waitForElementAndGetAttribute(By by, String attribute, String error_message, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
+        return element.getAttribute(attribute);
     }
 }
