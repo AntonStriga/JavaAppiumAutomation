@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2d777522-609d-4e77-bb44-791aa93c3f2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaAppiumAutomation/FirstTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaAppiumAutomation/FirstTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,8 +21,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1791">
-              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+            <state relative-caret-position="2259">
+              <caret line="274" column="40" lean-forward="true" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,16 +50,14 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1903" />
-    <option name="height" value="1013" />
+    <option name="width" value="1292" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -72,6 +74,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -94,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.addArticleToTheMyList">
+  <component name="RunManager" selected="JUnit.FirstTest.testAddTwoArticlesAndDeleteOne">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -124,6 +128,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testAddTwoArticlesAndDeleteOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FirstTest.testCancelSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -136,6 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FirstTest.testAddTwoArticlesAndDeleteOne" />
         <item itemvalue="JUnit.FirstTest.addArticleToTheMyList" />
         <item itemvalue="JUnit.FirstTest.firstTest" />
         <item itemvalue="JUnit.FirstTest" />
@@ -157,42 +172,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 07m 34s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 04m 10s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 09m 49s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 06m 20s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 11m 54s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 07m 43s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 14m 00s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 09m 38s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 15m 36s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 11m 40s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 27m 08s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 21m 07s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 29m 41s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 30m 37s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 31m 29s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 32m 13s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 34m 42s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 34m 04s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 38m 58s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesAndDeleteOne - 2019.06.07 at 00h 37m 10s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesAndDeleteOne" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2867804" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1705757" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -201,8 +215,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26623377" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37987012" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -221,10 +235,59 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="194" column="25" selection-start-line="194" selection-start-column="25" selection-end-line="194" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/internal/runners/statements/RunAfters.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/internal/runners/statements/RunBefores.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/internal/runners/statements/InvokeMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#870#1063#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1791">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+        <state relative-caret-position="2259">
+          <caret line="274" column="40" lean-forward="true" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

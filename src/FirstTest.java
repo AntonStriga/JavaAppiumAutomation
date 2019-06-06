@@ -6,8 +6,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,7 +30,7 @@ public class FirstTest {
         capabilities.setCapability("automationName","Appium");
         capabilities.setCapability("appPackage","org.wikipedia");
         capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","d:/JavaAppiumAutomation/apks/org.wikipedia.apk");
+        capabilities.setCapability("app","d:/JavaAppiumAutomation/apks/old.org.wikipedia.apk");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
@@ -44,43 +42,187 @@ public class FirstTest {
     }
 
     @Test
-    public void swipeToFooterInTheArticle()
+    public void testAddTwoArticlesAndDeleteOne()
     {
-        preconditions();
+        // Search articles by first query and select first from the list
 
         waitForElementAndClick(
-                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                "Cannot find skip button",
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' container",
                 5
         );
+
+        String search_query = "Appium";
 
         waitForElementAndSenKeys(
                 By.id("org.wikipedia:id/search_src_text"),
-                "Appium",
-                "Cannot find 'Search Wikipedia' text input",
+                search_query,
+                "Cannot find 'Search' text input",
                 5
         );
 
         waitForElementAndClick(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
-                "Cannot find content",
-                15
-        );
-
-        swipeUpToFindElement(
-                By.xpath("//*[@text='View page in browser']"),
-                "Cannot reach the footer",
+                By.id("org.wikipedia:id/page_list_item_container"),
+                "Cannot find search results by query: " + search_query,
                 20
         );
 
-    }
+        String first_article_name = waitForElementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find article title",
+                15
+        );
 
-    private void preconditions()
-    {
+        // Add article to reading list
+
         waitForElementAndClick(
-                By.id("org.wikipedia:id/fragment_onboarding_skip_button"),
-                "Cannot find SKIP button",
+                By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find 'More options' button",
                 5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find 'Add to reading list' option",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='GOT IT']"),
+                "Cannot find 'GOT IT' button",
+                5
+        );
+
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/text_input"),
+                "Cannot find Name of the list text input to clear it ",
+                10
+        );
+
+        String list_name = "List for testing only";
+
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/text_input"),
+                list_name,
+                "Cannot find Name of the list text input to enter name ",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='OK']"),
+                "Cannot find 'OK' button",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find 'Navigate up' button",
+                10
+        );
+
+        // Search articles by second query and select first from the list
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' container",
+                5
+        );
+
+        search_query = "Java";
+
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                search_query,
+                "Cannot find 'Search' text input",
+                5
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/page_list_item_container"),
+                "Cannot find search results by query: " + search_query,
+                20
+        );
+
+        String second_article_name = waitForElementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find article title",
+                15
+        );
+
+        // Add second article to list
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find 'More options' button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find 'Add to reading list' option",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/item_title'][@text='" + list_name + "']"),
+                "Cannot find list '" + list_name + "'",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find 'Navigate up' button",
+                10
+        );
+
+        // View saved articles list and delete first saved article
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/fragment_main_nav_tab_layout']//*[@content-desc='My lists']"),
+                "Cannot find 'my lists' button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/item_title'][@text='" + list_name + "']"),
+                "Cannot find saved list '" + list_name + "'",
+                15
+        );
+
+        Assert.assertTrue(
+                "There are no two articles in the list '" + list_name +"'",
+                getElementsAmount(By.id("org.wikipedia:id/page_list_item_container")) == 2
+        );
+
+        swipeElementToLeft(
+                By.xpath("//*[@text='" + first_article_name + "']"),
+                "Cannot find article '" + first_article_name + "' to delete"
+        );
+
+        Assert.assertTrue(
+                "Expected one article in the list '" + list_name +"'",
+                getElementsAmount(By.id("org.wikipedia:id/page_list_item_container")) == 1
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/page_list_item_container"),
+                "Cannot find article",
+                5
+        );
+
+        String real_article_name = waitForElementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find article title",
+                15
+        );
+
+        Assert.assertEquals(
+                "Real article title doesn't equal article title in the list",
+                second_article_name,
+                real_article_name
         );
     }
 
@@ -91,11 +233,6 @@ public class FirstTest {
         return wait.until(
                 ExpectedConditions.presenceOfElementLocated(by)
         );
-    }
-
-    private WebElement waitForElementPresent(By by, String error_message)
-    {
-        return waitForElementPresent(by, error_message, 5);
     }
 
     private WebElement waitForElementAndClick(By by, String error_message, long timeoutInSeconds)
@@ -112,59 +249,11 @@ public class FirstTest {
         return element;
     }
 
-    private boolean waitForElementNotPresent(By by, String error_message, long timeoutInSeconds)
-    {
-        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
-        wait.withMessage(error_message + "\n");
-        return wait.until(
-                ExpectedConditions.invisibilityOfElementLocated(by)
-        );
-    }
-
     private WebElement waitForElementAndClear(By by, String error_message, long timeoutInSeconds)
     {
         WebElement element = waitForElementPresent(by, error_message, 5);
         element.clear();
         return element;
-    }
-
-    protected void swipeUp(int timeToSwipe)
-    {
-        TouchAction action = new TouchAction(driver);
-        Dimension size = driver.manage().window().getSize();
-        int x = size.width/2;
-        int start_y = (int) (size.height * 0.8);
-        int end_y = (int) (size.height * 0.2);
-
-        action
-                .press(x, start_y)
-                .waitAction(timeToSwipe)
-                .moveTo(x, end_y)
-                .release()
-                .perform();
-    }
-
-    protected void swipeUpQuick()
-    {
-        swipeUp(200);
-    }
-
-    protected void swipeUpToFindElement(By by, String error_message, int max_swipes)
-    {
-        int already_swipe = 0;
-        while (driver.findElements(by).size() == 0)
-        {
-            if (already_swipe == max_swipes){
-                waitForElementPresent(
-                        by,
-                        "Cannot find element by swiping up/ \n" + error_message,
-                        0
-                );
-                return;
-            }
-            swipeUpQuick();
-            ++already_swipe;
-        }
     }
 
     protected void swipeElementToLeft(By by, String error_message)
@@ -184,7 +273,7 @@ public class FirstTest {
         TouchAction action = new TouchAction(driver);
         action
                 .press(right_x,middle_y)
-                .waitAction(300)
+                .waitAction(250)
                 .moveTo(left_x, middle_y)
                 .release()
                 .perform();
