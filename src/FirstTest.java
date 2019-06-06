@@ -75,6 +75,148 @@ public class FirstTest {
 
     }
 
+    @Test
+    public void addArticleToTheMyList()
+    {
+        preconditions();
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "Cannot find skip button",
+                5
+        );
+
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Appium",
+                "Cannot find 'Search Wikipedia' text input",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find content",
+                15
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/article_menu_bookmark"),
+                "Cannot find Add to My List button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='GOT IT']"),
+                "Cannot find GOT IT button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/create_button"),
+                "Cannot find Create new list button",
+                5
+        );
+
+        String name_of_folder = "Learning list";
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/text_input"),
+                name_of_folder,
+                "Cannot find text input element",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='OK']"),
+                "Cannot find OK button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find Navigate up button",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='NO THANKS']"),
+                "Cannot find NO THANKS button",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                "Cannot fine My lists button",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='" + name_of_folder + "']"),
+                "Cannot find Learning list",
+                5
+        );
+
+        swipeElementToLeft(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find saved article to swipe"
+        );
+
+        waitForElementNotPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']']"),
+                "Saved article still in the list",
+                5
+        );
+
+    }
+
+    @Test
+    public void changeScreenOrientationOnSearchResult()
+    {
+        preconditions();
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "Cannot find skip button",
+                5
+        );
+
+        String search_line = "Appium";
+
+        waitForElementAndSenKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                search_line,
+                "Cannot find 'Search Wikipedia' text input",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find content by query: " + search_line,
+                15
+        );
+
+        String title_before_rotation = waitForElementAndGetAttribute(
+                By.xpath("//*[class='android.view.View'][@content-desc='']"),
+                "text",
+                "Cannot find title of the article",
+                15
+        );
+
+        driver.rotate(ScreenOrientation.LANDSCAPE);
+
+        String title_after_rotation = waitForElementAndGetAttribute(
+                By.xpath(),
+                "text",
+                "Cannot find title of the article",
+                15
+        );
+
+        Assert.assertEquals(
+                "Titles are not equal",
+                title_after_rotation,
+                title_before_rotation
+        );
+    }
+
     private void preconditions()
     {
         waitForElementAndClick(
