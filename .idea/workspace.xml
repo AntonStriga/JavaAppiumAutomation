@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2d777522-609d-4e77-bb44-791aa93c3f2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaAppiumAutomation/FirstTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaAppiumAutomation/FirstTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,8 +21,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1791">
-              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+            <state relative-caret-position="1088">
+              <caret line="67" column="38" lean-forward="true" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +58,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -72,6 +74,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -94,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.addArticleToTheMyList">
+  <component name="RunManager" selected="JUnit.FirstTest.testTitlePresenceAssertation">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -134,8 +138,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FirstTest.testTitlePresenceAssertation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testTitlePresenceAssertation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FirstTest.testTitlePresenceAssertation" />
         <item itemvalue="JUnit.FirstTest.addArticleToTheMyList" />
         <item itemvalue="JUnit.FirstTest.firstTest" />
         <item itemvalue="JUnit.FirstTest" />
@@ -157,15 +172,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 07m 34s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 09m 49s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 11m 54s.xml">
-      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 14m 00s.xml">
       <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
@@ -187,12 +193,21 @@
     <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.05 at 17h 38m 58s.xml">
       <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="FirstTest_addArticleToTheMyList - 2019.06.07 at 01h 28m 48s.xml">
+      <configuration name="FirstTest.addArticleToTheMyList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_testTitlePresenceAssertation - 2019.06.07 at 01h 30m 14s.xml">
+      <configuration name="FirstTest.testTitlePresenceAssertation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_testTitlePresenceAssertation - 2019.06.07 at 01h 31m 04s.xml">
+      <configuration name="FirstTest.testTitlePresenceAssertation" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2867804" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15618336" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -223,8 +238,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1791">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+        <state relative-caret-position="1088">
+          <caret line="67" column="38" lean-forward="true" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
