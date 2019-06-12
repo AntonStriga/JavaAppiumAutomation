@@ -46,8 +46,6 @@ public class FirstTest {
     @Test
     public void swipeToFooterInTheArticle()
     {
-        preconditions();
-
         waitForElementAndClick(
                 By.xpath("//*[contains(@text,'Search Wikipedia')]"),
                 "Cannot find skip button",
@@ -73,15 +71,6 @@ public class FirstTest {
                 20
         );
 
-    }
-
-    private void preconditions()
-    {
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/fragment_onboarding_skip_button"),
-                "Cannot find SKIP button",
-                5
-        );
     }
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
