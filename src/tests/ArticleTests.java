@@ -41,4 +41,20 @@ public class ArticleTests extends CoreTestCase {
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();
     }
+
+
+    @Test
+    public void testTitlePresenceAssertation()
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+
+        SearchPageObject.initSearchInput();
+        String search_line = "Appium";
+        SearchPageObject.inputSearchLine(search_line);
+        SearchPageObject.clickByArticleWithSubstring(search_line);
+
+        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+
+        ArticlePageObject.assertArticleTitlePresent();
+    }
 }

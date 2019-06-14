@@ -55,4 +55,25 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject.waitForEmptyResultsLable();
         SearchPageObject.assertThereIsNoResultsOfSearch();
     }
+
+    @Test
+    public void testSearchListEmptyAfterSearchCancel()
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+
+        SearchPageObject.initSearchInput();
+        String search_line = "Java";
+        SearchPageObject.inputSearchLine(search_line);
+        int amount_of_articles = SearchPageObject.getAmountOfFoundArticles();
+
+        assertTrue(
+                "We found too few articles by query: '" + search_line + "'",
+                amount_of_articles > 1
+        );
+
+        SearchPageObject.waitForCancelButtonToAppear();
+        SearchPageObject.clickCancelSearch();
+        SearchPageObject.waitForClearSearchListLable();
+        SearchPageObject.assertThereIsNoResultsOfSearch();
+    }
 }

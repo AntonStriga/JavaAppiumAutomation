@@ -7,7 +7,8 @@ public class MyListPageObject extends MainPageObject {
 
     public static final String
         FOLDER_BY_NAME_TEMPLATE = "//*[@text='{FOLDER_NAME}']",
-        ARTICLE_TITLE_TEMPLATE = "//*[@text='{ARTICLE_TITLE}']";
+        ARTICLE_TITLE_TEMPLATE = "//*[@text='{ARTICLE_TITLE}']",
+        MYLIST_FOLDER_ELEMENT = "//*[@resource-id='org.wikipedia:id/page_list_item_container']";
 
     public MyListPageObject(AppiumDriver driver)
     {
@@ -50,5 +51,17 @@ public class MyListPageObject extends MainPageObject {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.swipeElementToLeft(By.xpath(article_xpath),"Cannot find saved article '" + article_title + "' to swipe");
         this.waitForArticleToDisappearsByTitle(article_title);
+    }
+
+    public int getAmountOfSavedArticles()
+    {
+        this.waitForElementPresent(By.xpath(MYLIST_FOLDER_ELEMENT),"Cannot find any element in folder",20);
+        return this.getElementsAmount(By.xpath(MYLIST_FOLDER_ELEMENT));
+    }
+
+    public void openArticleFromMyListByTitle(String article_title)
+    {
+        String article_xpath = getSavedArticleXpathByTitle(article_title);
+        this.waitForElementAndClick(By.xpath(article_xpath),"Cannot find article in My list by title '" + article_title + "'", 5);
     }
 }

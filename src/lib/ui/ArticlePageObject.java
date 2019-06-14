@@ -13,6 +13,7 @@ public class ArticlePageObject extends MainPageObject {
         OPTIONS_ADD_TO_MYLIST_BUTTON = "//*[@text='Add to reading list']",
         ADD_TO_MY_LIST_OVERLAY = "//*[@text='Got it']",
         MY_LIST_NAME_INPUT = "org.wikipedia:id/text_input",
+        MY_LIST_EXIST_FOLDER= "//*[@resource-id='org.wikipedia:id/item_title'][@text='{FOLDER_NAME}']",
         MY_LIST_OK_BUTTON = "//*[@text='OK']",
         CLOSE_ARTICLE_BUTTON = "//android.widget.ImageButton[@content-desc='Navigate up']";
 
@@ -20,6 +21,13 @@ public class ArticlePageObject extends MainPageObject {
     {
         super(driver);
     }
+
+    /* TEMPLATE METHODS */
+    private static String getFolderXpathByName(String folder_name)
+    {
+        return MY_LIST_EXIST_FOLDER.replace("{FOLDER_NAME}", folder_name);
+    };
+    /* TEMPLATE METHODS */
 
     public WebElement waitForTitleElement()
     {
@@ -39,16 +47,32 @@ public class ArticlePageObject extends MainPageObject {
 
     public void addArticleToMyList(String name_of_folder)
     {
+        this.waitForElementAndClick(By.xpath(OPTIONS_BUTTON),"Cannot find 'More options' button",10);
+        this.waitForElementAndClick(By.xpath(OPTIONS_ADD_TO_MYLIST_BUTTON),"Cannot find 'Add to reading list' button",10);
+        this.waitForElementAndClick(By.xpath(ADD_TO_MY_LIST_OVERLAY),"Cannot find GOT IT button",10);
+        this.waitForElementAndClear(By.id(MY_LIST_NAME_INPUT),"Cannot find input element to clear it",10);
+        this.waitForElementAndSenKeys(By.id(MY_LIST_NAME_INPUT),name_of_folder,"Cannot find text input element",10);
+        this.waitForElementAndClick(By.xpath(MY_LIST_OK_BUTTON),"Cannot find OK button",10);
+    }
+
+    public void addArticleToExistListByName(String folder_name)
+    {
         this.waitForElementAndClick(By.xpath(OPTIONS_BUTTON),"Cannot find 'More options' button",5);
         this.waitForElementAndClick(By.xpath(OPTIONS_ADD_TO_MYLIST_BUTTON),"Cannot find 'Add to reading list' button",5);
-        this.waitForElementAndClick(By.xpath(ADD_TO_MY_LIST_OVERLAY),"Cannot find GOT IT button",5);
-        this.waitForElementAndClear(By.id(MY_LIST_NAME_INPUT),"Cannot find input element to clear it",5);
-        this.waitForElementAndSenKeys(By.id(MY_LIST_NAME_INPUT),name_of_folder,"Cannot find text input element",5);
-        this.waitForElementAndClick(By.xpath(MY_LIST_OK_BUTTON),"Cannot find OK button",5);
+        String folder_name_xpath = getFolderXpathByName(folder_name);
+        this.waitForElementAndClick(By.xpath(folder_name_xpath),"Cannot find folder '" + folder_name + "'", 15);
     }
 
     public void closeArticle()
     {
         this.waitForElementAndClick(By.xpath(CLOSE_ARTICLE_BUTTON),"Cannot find Navigate up button",5);
     }
+
+    public void assertArticleTitlePresent()
+    {
+        int amount_of_elements = this.getElementsAmount(By.id(TITLE));
+        if (amount_of_elements == 0){
+            throw new AssertionError("Title of article is not present");
+        }
+    };
 }

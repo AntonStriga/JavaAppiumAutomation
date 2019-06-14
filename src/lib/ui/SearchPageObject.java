@@ -10,8 +10,9 @@ public class SearchPageObject extends MainPageObject{
         SEARCH_INPUT = "//*[contains(@text,'Search…')]",
         SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn",
         SEARCH_RESULT = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']",
-        SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_result_list']/*[@resource-id='org.wikipedia:id/page_list_item_container]",
-        SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text='No resulta found']";
+        SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']",
+        SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text='No resulta found']",
+        SEARCH_CLEAR_LIST_ELEMENT = "//*[@text='Search and read the free encyclopedia in your language']";
 
     public SearchPageObject(AppiumDriver driver)
     {
@@ -79,4 +80,8 @@ public class SearchPageObject extends MainPageObject{
         this.assertElementNotPresent(By.xpath(SEARCH_RESULT_ELEMENT),"We supposed not to find any results");
     }
 
+    public void waitForClearSearchListLable()
+    {
+        this.waitForElementPresent(By.xpath(SEARCH_CLEAR_LIST_ELEMENT), "It seems cancelling was not successful",10);
+    }
 }
