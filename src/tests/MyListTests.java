@@ -45,7 +45,9 @@ public class MyListTests extends CoreTestCase
 
         MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);
 
-        MyListPageObject.openFolderByName(name_of_folder);
+        if (Platform.getInstance().isAndroid()) {
+            MyListPageObject.openFolderByName(name_of_folder);
+        }
         MyListPageObject.waitForArticleToDisappearsByTitle(article_title);
     }
 }
