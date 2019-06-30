@@ -13,6 +13,7 @@ abstract public class ArticlePageObject extends MainPageObject {
         OPTIONS_ADD_TO_MYLIST_BUTTON,
         ADD_TO_MY_LIST_OVERLAY,
         MY_LIST_NAME_INPUT,
+        MY_LIST_EXIST_FOLDER,
         MY_LIST_OK_BUTTON,
         CLOSE_ARTICLE_BUTTON;
 
@@ -20,6 +21,13 @@ abstract public class ArticlePageObject extends MainPageObject {
     {
         super(driver);
     }
+
+    /* TEMPLATE METHODS */
+    private static String getFolderXpathByName(String folder_name)
+    {
+        return MY_LIST_EXIST_FOLDER.replace("{FOLDER_NAME}", folder_name);
+    };
+    /* TEMPLATE METHODS */
 
     public WebElement waitForTitleElement()
     {
@@ -52,8 +60,16 @@ abstract public class ArticlePageObject extends MainPageObject {
         this.waitForElementAndClick(OPTIONS_ADD_TO_MYLIST_BUTTON,"Cannot find 'Add to reading list' button",5);
         this.waitForElementAndClick(ADD_TO_MY_LIST_OVERLAY,"Cannot find GOT IT button",5);
         this.waitForElementAndClear(MY_LIST_NAME_INPUT,"Cannot find input element to clear it",5);
-        this.waitForElementAndSenKeys(MY_LIST_NAME_INPUT,name_of_folder,"Cannot find text input element",5);
+        this.waitForElementAndSenKeys(MY_LIST_NAME_INPUT, name_of_folder,"Cannot find text input element",5);
         this.waitForElementAndClick(MY_LIST_OK_BUTTON,"Cannot find OK button",5);
+    }
+
+    public void addArticleToExistListByName(String folder_name)
+    {
+        this.waitForElementAndClick(OPTIONS_BUTTON,"Cannot find 'More options' button",5);
+        this.waitForElementAndClick(OPTIONS_ADD_TO_MYLIST_BUTTON,"Cannot find 'Add to reading list' button",5);
+        String folder_name_xpath = getFolderXpathByName(folder_name);
+        this.waitForElementAndClick(folder_name_xpath,"Cannot find folder '" + folder_name + "'", 15);
     }
 
     public void addArticleToMySaved()

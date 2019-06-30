@@ -7,7 +7,8 @@ abstract public class MyListPageObject extends MainPageObject {
 
     protected static String
         FOLDER_BY_NAME_TEMPLATE,
-        ARTICLE_TITLE_TEMPLATE;
+        ARTICLE_TITLE_TEMPLATE,
+        MYLIST_FOLDER_ELEMENT;
 
     public MyListPageObject(AppiumDriver driver)
     {
@@ -54,5 +55,17 @@ abstract public class MyListPageObject extends MainPageObject {
             this.clickElementToTheRightUpperCorner(article_xpath,"Cannot find saved article");
         }
         this.waitForArticleToDisappearsByTitle(article_title);
+    }
+
+    public int getAmountOfSavedArticles()
+    {
+        this.waitForElementPresent(MYLIST_FOLDER_ELEMENT,"Cannot find any element in folder",20);
+        return this.getElementsAmount(MYLIST_FOLDER_ELEMENT);
+    }
+
+    public void openArticleFromMyListByTitle(String article_title)
+    {
+        String article_xpath = getSavedArticleXpathByTitle(article_title);
+        this.waitForElementAndClick(article_xpath,"Cannot find article in My list by title '" + article_title + "'", 5);
     }
 }

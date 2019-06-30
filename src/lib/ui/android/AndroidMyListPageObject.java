@@ -8,6 +8,7 @@ public class AndroidMyListPageObject extends MyListPageObject
     static {
         FOLDER_BY_NAME_TEMPLATE = "xpath://*[@text='{FOLDER_NAME}']";
         ARTICLE_TITLE_TEMPLATE = "xpath://*[@text='{ARTICLE_TITLE}']";
+        MYLIST_FOLDER_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']";
     }
 
     public AndroidMyListPageObject(AppiumDriver driver)
