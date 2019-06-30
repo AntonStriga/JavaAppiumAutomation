@@ -6,14 +6,10 @@ import lib.ui.ArticlePageObject;
 public class iOSArticlePageObject extends ArticlePageObject
 {
     static {
-        TITLE = "id:org.wikipedia:id/view_page_title_text";
-        FOOTER_ELEMENT = "xpath://*[@text='View page in browser']";
-        OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']";
-        OPTIONS_ADD_TO_MYLIST_BUTTON = "xpath://*[@text='Add to reading list']";
-        ADD_TO_MY_LIST_OVERLAY = "xpath://*[@text='Got it']";
-        MY_LIST_NAME_INPUT = "id:org.wikipedia:id/text_input";
-        MY_LIST_OK_BUTTON = "xpath://*[@text='OK']";
-        CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
+        TITLE = "id:Java (programming language)";
+        FOOTER_ELEMENT = "id:View page in browser";
+        OPTIONS_ADD_TO_MYLIST_BUTTON = "id:Save for later";
+        CLOSE_ARTICLE_BUTTON = "id:Back";
     }
 
     public iOSArticlePageObject(AppiumDriver driver)
