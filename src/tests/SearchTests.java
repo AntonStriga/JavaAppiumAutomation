@@ -56,4 +56,51 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject.waitForEmptyResultsLable();
         SearchPageObject.assertThereIsNoResultsOfSearch();
     }
+
+    @Test
+    public void testCheckPresenceOfThreeResults()
+    {
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
+
+        SearchPageObject.initSearchInput();
+        String search_line = "sport";
+        SearchPageObject.inputSearchLine(search_line);
+
+        boolean search_result_missed = false;
+
+        try
+        {
+            SearchPageObject.waitForElementByTitleAndDescription("Sport","Forms of competitive activity, usually physical");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            search_result_missed = true;
+        }
+
+        try
+        {
+            SearchPageObject.waitForElementByTitleAndDescription("Sport utility vehicle","Type of automobile");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            search_result_missed = true;
+        }
+
+        try
+        {
+            SearchPageObject.waitForElementByTitleAndDescription("Sport of athletics","Collection of sports which involve running, jumping, throwing, and walking");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            search_result_missed = true;
+        }
+
+        if (search_result_missed)
+        {
+            throw new AssertionError("Cannot find all expected articles in search results by query: '" + search_line + "'");
+        }
+    }
 }

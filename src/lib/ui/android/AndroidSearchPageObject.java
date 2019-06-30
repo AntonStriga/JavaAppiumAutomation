@@ -12,6 +12,7 @@ public class AndroidSearchPageObject extends SearchPageObject
         SEARCH_RESULT = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{SUBSTRING}']";
         SEARCH_RESULT_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/search_result_list']/*[@resource-id='org.wikipedia:id/page_list_item_container]";
         SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No resulta found']";
+        SEARCH_RESULT_TITLE_DESCRIPTION = "xpath://*[@text='{SUBSTRING_TITLE}']/following-sibling::*[@text='{SUBSTRING_DESCRIPTION}']/..";
     }
 
     public AndroidSearchPageObject(AppiumDriver driver)

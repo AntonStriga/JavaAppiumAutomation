@@ -12,7 +12,8 @@ abstract public class SearchPageObject extends MainPageObject
         SEARCH_CANCEL_BUTTON,
         SEARCH_RESULT,
         SEARCH_RESULT_ELEMENT,
-        SEARCH_EMPTY_RESULT_ELEMENT;
+        SEARCH_EMPTY_RESULT_ELEMENT,
+        SEARCH_RESULT_TITLE_DESCRIPTION;
 
     public SearchPageObject(AppiumDriver driver)
     {
@@ -23,7 +24,12 @@ abstract public class SearchPageObject extends MainPageObject
     private static String getResultSearchElement(String substring)
     {
         return SEARCH_RESULT.replace("{SUBSTRING}", substring);
-    };
+    }
+
+    private static String getResultSearchElementByTitleAndDescription(String substring_title, String substring_description)
+    {
+        return SEARCH_RESULT_TITLE_DESCRIPTION.replace("{SUBSTRING_TITLE}", substring_title).replace("{SUBSTRING_DESCRIPTION}",substring_description);
+    }
     /* TEMPLATE METHODS */
 
     public void initSearchInput()
@@ -80,4 +86,12 @@ abstract public class SearchPageObject extends MainPageObject
         this.assertElementNotPresent(SEARCH_RESULT_ELEMENT,"We supposed not to find any results");
     }
 
+    public void waitForElementByTitleAndDescription(String substring_title, String substring_description)
+    {
+        String search_result_xpath = getResultSearchElementByTitleAndDescription(substring_title, substring_description);
+        this.waitForElementPresent(
+                search_result_xpath,
+                "Cannot find search result with title: '" + substring_title + "' and description: '" + substring_description + "' in search results",
+                15);
+    }
 }
