@@ -2,10 +2,10 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 
-public class NavigationUI extends MainPageObject {
+abstract public class NavigationUI extends MainPageObject {
 
-    private static final String
-        MY_LIST_BUTTON = "xpath://android.widget.FrameLayout[@content-desc='My lists']";
+    protected static String
+        MY_LIST_BUTTON;
 
     public NavigationUI(AppiumDriver driver)
     {
