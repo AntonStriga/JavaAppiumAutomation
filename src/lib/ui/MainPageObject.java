@@ -203,7 +203,7 @@ public class MainPageObject {
         String by_type = exploded_locator[0];
         String locator = exploded_locator[1];
 
-        if(by_type.equals("path")){
+        if(by_type.equals("xpath")){
             return By.xpath(locator);
         }else if(by_type.equals("id")){
             return By.id(locator);
