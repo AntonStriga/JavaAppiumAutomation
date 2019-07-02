@@ -61,7 +61,7 @@ public class MainPageObject {
         action.tap(point_to_click_x, point_to_click_y).perform();
     }
 
-    public WebElement waitForElementAndSenKeys(String locator, String value, String error_message, long timeoutInSeconds)
+    public WebElement waitForElementAndSendKeys(String locator, String value, String error_message, long timeoutInSeconds)
     {
         WebElement element = waitForElementPresent(locator, error_message, timeoutInSeconds);
         element.sendKeys(value);
@@ -203,7 +203,7 @@ public class MainPageObject {
         String by_type = exploded_locator[0];
         String locator = exploded_locator[1];
 
-        if(by_type.equals("path")){
+        if(by_type.equals("xpath")){
             return By.xpath(locator);
         }else if(by_type.equals("id")){
             return By.id(locator);

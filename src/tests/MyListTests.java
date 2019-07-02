@@ -26,6 +26,7 @@ public class MyListTests extends CoreTestCase
         SearchPageObject.inputSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
 
+
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
 
         ArticlePageObject.waitForTitleElement();
@@ -35,7 +36,9 @@ public class MyListTests extends CoreTestCase
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
             ArticlePageObject.addArticleToMySaved();
+            ArticlePageObject.closeSyncPopup();
         }
+
         ArticlePageObject.closeArticle();
 
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
@@ -56,33 +59,35 @@ public class MyListTests extends CoreTestCase
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
-        String search_line = "Appium";
-        SearchPageObject.inputSearchLine(search_line);
-        SearchPageObject.clickByArticleWithSubstring(search_line);
+        SearchPageObject.inputSearchLine("Sandwich");
+        SearchPageObject.clickByArticleWithSubstring("Two slices of bread");
 
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
 
-        ArticlePageObject.waitForTitleElement();
-        String first_article_title = ArticlePageObject.getArticleTitle();
-
         if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.waitForTitleElement();
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
+            ArticlePageObject.waitForWikipediaReturnElement();
             ArticlePageObject.addArticleToMySaved();
+            ArticlePageObject.closeSyncPopup();
         }
         ArticlePageObject.closeArticle();
 
         SearchPageObject.initSearchInput();
-        search_line = "Java";
-        SearchPageObject.inputSearchLine(search_line);
-        SearchPageObject.clickByArticleWithSubstring(search_line);
+        if (Platform.getInstance().isIOS()) {
+            SearchPageObject.clearSearchLine();
+        }
 
-        ArticlePageObject.waitForTitleElement();
-        String second_article_title = ArticlePageObject.getArticleTitle();
+        String expected_search_result = "Java";
+        SearchPageObject.inputSearchLine(expected_search_result);
+        SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
 
         if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.waitForTitleElement();
             ArticlePageObject.addArticleToExistListByName(name_of_folder);
         } else {
+            ArticlePageObject.waitForWikipediaReturnElement();
             ArticlePageObject.addArticleToMySaved();
         }
         ArticlePageObject.closeArticle();
@@ -103,7 +108,7 @@ public class MyListTests extends CoreTestCase
                 number_of_saved_articles == 2
         );
 
-        MyListPageObject.swipeByArticleToDelete(first_article_title);
+        MyListPageObject.swipeByArticleToDelete("Sandwich");
         number_of_saved_articles = MyListPageObject.getAmountOfSavedArticles();
 
         assertTrue(
@@ -111,14 +116,11 @@ public class MyListTests extends CoreTestCase
                 number_of_saved_articles == 1
         );
 
-        MyListPageObject.openArticleFromMyListByTitle(second_article_title);
-        ArticlePageObject.waitForTitleElement();
-        String real_article_title = ArticlePageObject.getArticleTitle();
+        String saved_article_name = MyListPageObject.getSavedArticleName();
 
-        assertEquals(
-                "Real article title doesn't equal article title in the list",
-                second_article_title,
-                real_article_title
+        assertTrue(
+                "Expected saved article is not in the list",
+                saved_article_name.contains(expected_search_result)
         );
     }
 }

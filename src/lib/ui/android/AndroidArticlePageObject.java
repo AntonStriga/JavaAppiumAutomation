@@ -10,7 +10,7 @@ public class AndroidArticlePageObject extends ArticlePageObject
         FOOTER_ELEMENT = "xpath://*[@text='View page in browser']";
         OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']";
         OPTIONS_ADD_TO_MYLIST_BUTTON = "xpath://*[@text='Add to reading list']";
-        ADD_TO_MY_LIST_OVERLAY = "xpath://*[@text='Got it']";
+        ADD_TO_MY_LIST_OVERLAY = "xpath://*[@text='GOT IT']";
         MY_LIST_NAME_INPUT = "id:org.wikipedia:id/text_input";
         MY_LIST_EXIST_FOLDER= "xpath://*[@resource-id='org.wikipedia:id/item_title'][@text='{FOLDER_NAME}']";
         MY_LIST_OK_BUTTON = "xpath://*[@text='OK']";

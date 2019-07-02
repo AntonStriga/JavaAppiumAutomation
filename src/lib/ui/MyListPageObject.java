@@ -2,6 +2,7 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 import lib.Platform;
+import org.openqa.selenium.WebElement;
 
 abstract public class MyListPageObject extends MainPageObject {
 
@@ -61,6 +62,16 @@ abstract public class MyListPageObject extends MainPageObject {
     {
         this.waitForElementPresent(MYLIST_FOLDER_ELEMENT,"Cannot find any element in folder",20);
         return this.getElementsAmount(MYLIST_FOLDER_ELEMENT);
+    }
+
+    public String getSavedArticleName()
+    {
+        if (Platform.getInstance().isAndroid()){
+            return this.waitForElementAndGetAttribute(MYLIST_FOLDER_ELEMENT, "text","Cannot find any element in folder", 20);
+        } else {
+            return this.waitForElementAndGetAttribute(MYLIST_FOLDER_ELEMENT, "name","Cannot find any element in folder", 20);
+        }
+
     }
 
     public void openArticleFromMyListByTitle(String article_title)
