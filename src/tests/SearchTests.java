@@ -66,7 +66,7 @@ public class SearchTests extends CoreTestCase {
         String search_line = "sport";
         SearchPageObject.inputSearchLine(search_line);
 
-        boolean search_result_missed = false;
+        boolean all_search_result_present = true;
 
         try
         {
@@ -75,7 +75,7 @@ public class SearchTests extends CoreTestCase {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            search_result_missed = true;
+            all_search_result_present = false;
         }
 
         try
@@ -85,8 +85,7 @@ public class SearchTests extends CoreTestCase {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            search_result_missed = true;
-        }
+            all_search_result_present = false;        }
 
         try
         {
@@ -95,12 +94,11 @@ public class SearchTests extends CoreTestCase {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            search_result_missed = true;
-        }
+            all_search_result_present = false;        }
 
-        if (search_result_missed)
-        {
-            throw new AssertionError("Cannot find all expected articles in search results by query: '" + search_line + "'");
-        }
+        assertTrue(
+                "Cannot find all expected articles in search results by query: '" + search_line + "'",
+                all_search_result_present
+        );
     }
 }
