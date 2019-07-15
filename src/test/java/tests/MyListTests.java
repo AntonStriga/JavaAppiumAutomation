@@ -80,18 +80,45 @@ public class MyListTests extends CoreTestCase
 
         SearchPageObject.initSearchInput();
         SearchPageObject.inputSearchLine("Sandwich");
-        SearchPageObject.clickByArticleWithSubstring("Two slices of bread");
+        SearchPageObject.clickByArticleWithSubstring("own in Kent");
 
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
 
-        if (Platform.getInstance().isAndroid()) {
+        String article_title = "";
+        if (Platform.getInstance().isIOS()) {
+            ArticlePageObject.waitForWikipediaReturnElement();
+        } else {
             ArticlePageObject.waitForTitleElement();
+            article_title = ArticlePageObject.getArticleTitle();
+        }
+
+        if (Platform.getInstance().isAndroid()) {
             ArticlePageObject.addArticleToMyList(name_of_folder);
         } else {
-            ArticlePageObject.waitForWikipediaReturnElement();
             ArticlePageObject.addArticleToMySaved();
+        }
+
+        if (Platform.getInstance().isIOS()) {
             ArticlePageObject.closeSyncPopup();
         }
+
+        if (Platform.getInstance().isMobWeb()) {
+            AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
+            Auth.clickAuthButton();
+            Auth.enterLoginData(login, password);
+            Auth.submitForm();
+
+            ArticlePageObject.waitForTitleElement();
+
+            assertEquals(
+                    "We are not at the same page after login",
+                    article_title,
+                    ArticlePageObject.getArticleTitle()
+            );
+
+            ArticlePageObject.addArticleToMySaved();
+        }
+
         ArticlePageObject.closeArticle();
 
         SearchPageObject.initSearchInput();
@@ -101,19 +128,23 @@ public class MyListTests extends CoreTestCase
 
         String expected_search_result = "Java";
         SearchPageObject.inputSearchLine(expected_search_result);
-        SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
+        SearchPageObject.clickByArticleWithSubstring("bject-oriented programming language");
+
+        if (Platform.getInstance().isIOS()) {
+            ArticlePageObject.waitForWikipediaReturnElement();
+        } else {
+            ArticlePageObject.waitForTitleElement();
+        }
 
         if (Platform.getInstance().isAndroid()) {
-            ArticlePageObject.waitForTitleElement();
             ArticlePageObject.addArticleToExistListByName(name_of_folder);
         } else {
-            ArticlePageObject.waitForWikipediaReturnElement();
             ArticlePageObject.addArticleToMySaved();
         }
         ArticlePageObject.closeArticle();
 
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
-
+        NavigationUI.openNavigation();
         NavigationUI.clickMyList();
 
         MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);

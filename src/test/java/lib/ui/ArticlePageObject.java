@@ -1,6 +1,5 @@
 package lib.ui;
 
-import io.appium.java_client.AppiumDriver;
 import lib.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -107,10 +106,10 @@ abstract public class ArticlePageObject extends MainPageObject {
             this.waitForElementAndClick(
                     OPTIONS_REMOVE_FROM_MYLIST_BUTTON,
                     "Cannot find button to remove article from saved ",
-                    5
+                    10
             );
-            this.waitForElementPresent(
-                    OPTIONS_ADD_TO_MYLIST_BUTTON,
+            this.waitForElementNotPresent(
+                    OPTIONS_REMOVE_FROM_MYLIST_BUTTON,
                     "Cannot find button to add article to saved after article removing before",
                     10
             );

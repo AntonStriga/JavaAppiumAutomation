@@ -1,7 +1,7 @@
 package lib.ui;
 
-import io.appium.java_client.AppiumDriver;
 import lib.Platform;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 abstract public class MyListPageObject extends MainPageObject {
@@ -63,6 +63,11 @@ abstract public class MyListPageObject extends MainPageObject {
             this.waitForElementAndClick(
                     remove_locator,
                     "Cannot click button to remove article from saved",
+                    15
+            );
+            this.waitForElementNotPresent(
+                    remove_locator,
+                    "Article still not deleted",
                     10
             );
         }
@@ -86,12 +91,18 @@ abstract public class MyListPageObject extends MainPageObject {
 
     public String getSavedArticleName()
     {
+        WebElement title_element = waitForElementPresent(
+                MYLIST_FOLDER_ELEMENT,
+                "Cannot find any element in folder",
+                20
+        );
         if (Platform.getInstance().isAndroid()){
-            return this.waitForElementAndGetAttribute(MYLIST_FOLDER_ELEMENT, "text","Cannot find any element in folder", 20);
+            return title_element.getAttribute("text");
+        } else if (Platform.getInstance().isIOS()){
+            return title_element.getAttribute("name");
         } else {
-            return this.waitForElementAndGetAttribute(MYLIST_FOLDER_ELEMENT, "name","Cannot find any element in folder", 20);
+            return title_element.getText();
         }
-
     }
 
     public void openArticleFromMyListByTitle(String article_title)
