@@ -150,7 +150,7 @@ public class MainPageObject {
             if (already_swipe == max_swipes){
                 waitForElementPresent(
                         locator,
-                        "Cannot find element by swiping up/ \n" + error_message,
+                        "Cannot find element by swiping up \n" + error_message,
                         0
                 );
                 return;

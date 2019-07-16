@@ -1,6 +1,5 @@
 package lib;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,11 +17,16 @@ public class Platform {
         PLATFORM_IOS = "ios",
         PLATFORM_ANDROID = "android",
         PLATFORM_MOBILE_WEB = "mobile_web",
-        APPIUM_URL = "http://127.0.0.1:4723/wd/hub";
+        APPIUM_URL_TEMPLATE = "http://127.0.0.1:{PORT}/wd/hub";
 
     private static Platform instance;
 
     private Platform() {}
+
+    private String getAppiumUrl()
+    {
+        return APPIUM_URL_TEMPLATE.replace("{PORT}",this.getAppiumPort());
+    }
 
     public static Platform getInstance()
     {
@@ -34,7 +38,7 @@ public class Platform {
 
     public RemoteWebDriver getDriver() throws Exception
     {
-        URL URL = new URL(APPIUM_URL);
+        URL URL = new URL(this.getAppiumUrl());
 
         if (this.isAndroid()) {
             return new AndroidDriver(URL,this.getAndroidDesiredCapabilities());
@@ -62,23 +66,6 @@ public class Platform {
         return isPlatform(PLATFORM_MOBILE_WEB);
     }
 
-    private DesiredCapabilities getCapabilitiesByPlatrormEnv() throws Exception
-    {
-        String platform = System.getenv("PLATFORM");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-
-        if (platform.equals(PLATFORM_ANDROID)){
-
-        }else if (platform.equals(PLATFORM_IOS)){
-
-        }else {
-            throw new Exception("Cannot determinate platform platform variable '" + platform + "'");
-        }
-
-        return capabilities;
-    }
-
     private DesiredCapabilities getAndroidDesiredCapabilities()
     {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -89,7 +76,7 @@ public class Platform {
         capabilities.setCapability("automationName","Appium");
         capabilities.setCapability("appPackage","org.wikipedia");
         capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","/Users/qa/Desktop/JavaAppiumAutomation/apks/old.org.wikipedia.apk");
+        capabilities.setCapability("app","/Users/qa/JavaAppium/src/test/apks/old.org.wikipedia.apk");
         capabilities.setCapability("orientation","PORTRAIT");
 
         return capabilities;
@@ -102,7 +89,7 @@ public class Platform {
         capabilities.setCapability("platformName","iOS");
         capabilities.setCapability("deviceName","iPhone X");
         capabilities.setCapability("platformVersion","11.2");
-        capabilities.setCapability("app","/Users/qa/Desktop/JavaAppiumAutomation/apks/Wikipedia.app");
+        capabilities.setCapability("app","/Users/qa/JavaAppium/src/test/apks/Wikipedia.app");
         capabilities.setCapability("orientation","PORTRAIT");
 
         return capabilities;
@@ -133,5 +120,10 @@ public class Platform {
     public String getPlatformVariable()
     {
         return System.getenv("PLATFORM");
+    }
+
+    public String getAppiumPort()
+    {
+        return System.getenv("APPIUM_PORT");
     }
 }
